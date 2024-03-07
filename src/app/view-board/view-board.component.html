@@ -1,0 +1,27 @@
+<div style="display: flex; margin: 30px 0px; justify-content:center;">
+    <div style="display: flex; flex-direction: column;">
+        <div style="display: flex; justify-content: center; margin:30px 0px;">
+            <button (click)="openNewCardDialog()" mat-raised-button color="primary">Yeni Kart Ekle</button>
+        </div>
+
+
+        <mat-card *ngFor="let card of boardService.boards[boardIndex].cards; let i =index;" style="min-width: 400px; margin-bottom: 30px;">
+
+            <mat-card-title>{{card.title}}</mat-card-title>
+
+            <mat-card-content>
+                <div style="display: flex; flex-direction: column;">
+                    <mat-checkbox *ngFor="let checkbox of card.checklist; let ikinci =index"
+                        [(ngModel)]="card.status[ikinci]">
+                        {{checkbox}}
+                    </mat-checkbox>
+                </div>
+            </mat-card-content>
+
+            <mat-card-actions style="justify-content: space-around;">
+                <button mat-raised-button (click)="deleteCard(i)" color="accent">Kartı Sil</button>
+                <button mat-raised-button (click)="editCard(i, card)" color="primary">Güncelle </button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

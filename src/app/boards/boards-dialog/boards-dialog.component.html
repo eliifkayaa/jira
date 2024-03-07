@@ -1,0 +1,20 @@
+
+
+  <h2 mat-dialog-title>Yeni Board Ekle</h2>
+<mat-dialog-content>  
+    <form [formGroup]="boardForm">
+        <mat-form-field  appearance="fill" style="width: 100%;">
+          <mat-label>Başlık</mat-label>
+          <input matInput formControlName="title">
+          <mat-error *ngIf="boardForm.get('title')?.hasError('required')">
+        Başlık Girmek Zorunludur.
+        </mat-error>
+        </mat-form-field>
+      </form>
+</mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button [disabled]="boardForm.invalid" (click)="create()" mat-raised-button color="primary">Oluştur</button>
+    <button mat-raised-button color="warn" (click)="close()">İptal</button>
+  </mat-dialog-actions>
+  
